@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+    <link rel="stylesheet" type="text/css" href="style.css" />
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+<head>
+    <style>
+        .circle {
+            width: 100px;
+            height: 100px;
+            background-color: purple;
+            border-radius: 50%;
+            border-color: black;
+            stroke: black;
+            stroke-width: 10%;
+        }
+    </style>
+</head>
+<body>
+    <div class="circle" id="circle"></div>
+    <p>Балланс: <span id="score">0</span></p>
+    <button onclick="addPoint()">Click me</button>
+    <h2>Обменять роксы на промокоды:</h2>
+    <button onclick="buyPromoCode(1, 1000)">Карта для проезда (1000 points)</button>
+
+    <script>
+        let score = 0;
+        function addPoint() {
+            score++;
+            document.getElementById("score").innerText = score;
+        }
+
+        function buyPromoCode(codeNumber, cost) {
+            if (score >= cost) {
+                score -= cost;
+                document.getElementById("score").innerText = score;
+                let promoCodes = ["10OFF", "20OFF", "30OFF"];
+                alert("Ваш промокод: " + promoCodes[codeNumber - 1]);
+            } else {
+                alert("Недостаточно Роксов!");
+            }
+        }
+    </script>
+</body>
+</html>
